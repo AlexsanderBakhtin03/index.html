@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Александр Бахтин | Непобеждённый чемпион</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Oswald', Arial, sans-serif;
+        }
+        
+        body {
+            background: #000 url('https://images.unsplash.com/photo-1543357480-c60d400e2ef9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover fixed;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Уменьшил прозрачность затемнения */
+            z-index: -1;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        nav {
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        nav a {
+            color: #fff;
+            padding: 8px 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 1px solid #d4af37;
+            border-radius: 25px;
+        }
+        
+        nav a:hover {
+            background: #d4af37;
+            color: #000;
+        }
+        
+        .content {
+            padding-top: 80px;
+        }
+        
+        section {
+            padding: 100px 10%;
+            min-height: 100vh;
+            background: rgba(0,0,0,0.6); /* Полупрозрачная подложка */
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid #333;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+                        url('https://img.championat.com/news/1200/x-jpg/9b/111/14762697801476269780.jpg') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #d4af37;
+            border-radius: 10px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: #d4af37;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        
+        h2 {
+            color: #d4af37;
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        h3 {
+            color: #d4af37;
+            margin: 40px 0 20px;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #d4af37;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        p {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+        
+        .news-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .news-item {
+            background: rgba(20,20,20,0.8);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #d4af37;
+            transition: all 0.4s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .news-item:hover {
+            transform: translateX(10px);
+            background: rgba(30,30,30,0.9);
+        }
+        
+        .news-date {
+            color: #d4af37;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .news-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            background: rgba(10,10,10,0.8);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid #d4af37;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            transition: transform 0.4s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .stat-card h3 {
+            margin: 0 0 20px 0;
+            font-size: 1.6rem;
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 5%;
+            }
+            
+            nav ul {
+                gap: 8px;
+            }
+            
+            nav a {
+                padding: 6px 15px;
+                font-size: 1rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+                margin-bottom: 40px;
+            }
+            
+            .hero-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#bio">Биография</a></li>
+            <li><a href="#stats">Статистика</a></li>
+            <li><a href="#news">Новости</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>НЕПОБЕЖДЁННЫЙ</h1>
+                <p style="font-size: clamp(1.1rem, 3vw, 1.5rem); margin: 20px auto 0; line-height: 1.7;">
+                    Александр Алексеевич Бахтин - легендарный российский боксёр,<br>чемпион мира по версии IBO
+                </p>
+            </div>
+        </section>
+
+        <section id="bio">
+            <h2>Биография</h2>
+            <p>Александр Алексеевич Бахтин (род. 6 августа 1981 года, Краснокаменск, Читинская область) — российский боксёр-профессионал, выступавший в втором легчайшем и легчайшем весе.</p>
+            
+            <h3>Любительская карьера</h3>
+            <p>В 8 лет впервые вышел на ринг в Краснокаменске, первым тренером стал Валерий Номхоев. После окончания 9 классов переехал в Улан-Удэ, где тренировался и параллельно учился в лицее на сварщика и сантехника, затем поступил в ВСГТУ.</p>
+            
+            <h3>Профессиональная карьера</h3>
+            <p>В 2000 году переехал в Японию, первый бой в качестве профессионала провёл 20 ноября 2000 года. 18 сентября 2012 года, выиграв у филиппинца Роли Гаска, стал чемпионом мира по версии Международной боксёрской организации (IBO).</p>
+        </section>
+
+        <section id="stats">
+            <h2>Статистика</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Профессиональная карьера</h3>
+                    <p>• Боёв: 31</p>
+                    <p>• Побед: 31 (12 нокаутом)</p>
+                    <p>• Поражений: 0</p>
+                    <p>• Первый бой: 20.11.2000</p>
+                    <p>• Последний бой: 31.03.2013</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Титулы и достижения</h3>
+                    <p>• Чемпион мира IBO (2012-2013)</p>
+                    <p>• 9-кратный чемпион Японии</p>
+                    <p>• Интерконтинентальный чемпион WBA</p>
+                    <p>• 2-кратный чемпион Азии OPBF</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <h2>Новости</h2>
+            <div class="news-container">
+                <div class="news-item">
+                    <p class="news-date">06.10.2013</p>
+                    <h3 class="news-title">Александр Бахтин: «Кличко просто вис на Поветкине»</h3>
+                    <p>После боя за титул чемпиона мира между Владимиром Кличко и Александром Поветкиным, Бахтин раскритиковал стиль украинского боксёра: "Это не бокс, а цирк. Кличко просто вис на Поветкине, не давая ему работать".</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">05.10.2013</p>
+                    <h3 class="news-title">Александр Бахтин: «Победит Поветкин, я увидел это в его глазах»</h3>
+                    <p>Накануне боя за титул чемпиона мира Бахтин дал эксклюзивное интервью: "Я видел Поветкина на тренировке - в его глазах была та самая злость, которая нужна для победы. Он сделает это!"</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">25.04.2013</p>
+                    <h3 class="news-title">Александр Бахтин принял решение завершить карьеру</h3>
+                    <p>Непобеждённый чемпион мира объявил о завершении профессиональной карьеры. "Это сложное решение, но проблемы со здоровьем оставляют мне мало выбора", - заявил Бахтин на пресс-конференции.</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">01.04.2013</p>
+                    <h3 class="news-title">Бахтин досрочно победил Эрреру</h3>
+                    <p>В Балашихе состоялась успешная защита титула чемпиона мира IBO. Бахтин победил колумбийца Йогли Эрреру техническим нокаутом в 7 раунде после серии точных ударов.</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">19.02.2013</p>
+                    <h3 class="news-title">Тренер Бахтина: «Перед боем против Сантильяна мы будем подрабатывать фирменные приемы Саши»</h3>
+                    <p>Главный тренер чемпиона рассказал о подготовке к очередной защите титула: "Особое внимание уделяем коронным комбинациям - левый хук в корпус с последующим правым кроссом в голову".</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">19.02.2013</p>
+                    <h3 class="news-title">Александр Бахтин проведет бой против Серхио Сантильяна</h3>
+                    <p>Официально объявлен следующий соперник чемпиона - мексиканский претендент Серхио Сантильяна (24-3-0). Бой состоится 15 мая в Москве.</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">04.01.2013</p>
+                    <h3 class="news-title">Александр Бахтин проведет защиту титула IBO 31 марта в Балашихе</h3>
+                    <p>Промоутерская компания чемпиона объявила дату и место следующей защиты титула. Соперником станет колумбиец Йогли Эррера (22-2-0).</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">19.09.2012</p>
+                    <h3 class="news-title">Бахтин – Гаска: россиянин победил, завоевая титул IBO</h3>
+                    <p>В Москве состоялся исторический бой, в котором Александр Бахтин завоевал вакантный титул чемпиона мира по версии IBO, победив филиппинца Роли Гаску единогласным решением судей.</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">17.09.2012</p>
+                    <h3 class="news-title">Александр Бахтин проведет 18 сентября в Москве бой с филиппинцем Роли Гаска</h3>
+                    <p>Накануне важного поединка за вакантный титул IBO Бахтин провел открытую тренировку для прессы, продемонстрировав отличную форму.</p>
+                </div>
+                
+                <div class="news-item">
+                    <p class="news-date">20.08.2012</p>
+                    <h3 class="news-title">Бой Александра Бахтина с мексиканцем Брионесом состоится 7 сентября в Улан-Удэ</h3>
+                    <p>Родной город боксёра готовится к приему важного поединка. Власти Бурятии обещают организовать телетрансляцию на центральной площади.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Плавная навигация с учетом высоты меню
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        const animateOnScroll = () => {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            const windowTop = window.scrollY;
+            const windowBottom = windowTop + windowHeight;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionBottom = sectionTop + section.offsetHeight;
+
+                if (sectionBottom >= windowTop && sectionTop <= windowBottom) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Инициализация
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            document.querySelector('#home').style.opacity = '1';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
